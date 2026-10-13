@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Menyusuri Nilai dalam Cerita Lintas Zaman</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--m1:#3a0a14;--m2:#5c1020;--m3:#800020;--m4:#a8334a;--gold:#f2c14e;--gold2:#b8860b;--cream:#fff3dc;--ink:#2a0810;--teal:#1f9a86;--tealD:#126356;--shadow:rgba(0,0,0,.45);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--m1:#2c070f}}
+:root[data-theme="dark"]{--m1:#2c070f}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;font-family:Nunito,system-ui,sans-serif;color:var(--cream);background:radial-gradient(ellipse at top,var(--m3),var(--m1) 70%) fixed,var(--m1);min-height:100vh;overflow-x:hidden}
+h1,h2,h3{font-family:"Cinzel Decorative",Georgia,serif;margin:.2em 0}
+.stars{position:fixed;inset:0;pointer-events:none;z-index:0}
+.stars i{position:absolute;width:6px;height:6px;background:var(--gold);border-radius:50%;opacity:.5;animation:tw 3s infinite alternate}
+@keyframes tw{to{opacity:.05;transform:scale(.4)}}
+@keyframes fl{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-16px) rotate(3deg)}}
+@keyframes wave{0%,100%{transform:skewY(0)}50%{transform:skewY(-8deg)}}
+@keyframes pop{0%{transform:scale(.6);opacity:0}70%{transform:scale(1.06)}100%{transform:scale(1);opacity:1}}
+@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:8px;background:rgba(40,6,14,.88);backdrop-filter:blur(6px);border-bottom:3px solid var(--gold2)}
+nav button{font:700 12px Nunito;padding:6px 10px;border-radius:20px;border:2px solid var(--gold2);background:var(--m2);color:var(--cream);cursor:pointer}
+nav button.on{background:var(--gold);color:var(--ink)}
+main{position:relative;z-index:1;max-width:1000px;margin:auto;padding:18px 14px 60px}
+.scr{display:none}.scr.on{display:block;animation:pop .5s}
+.btn{font:900 17px Nunito;padding:13px 26px;border-radius:16px;border:3px solid var(--ink);background:linear-gradient(var(--gold),#e0a526);color:var(--ink);cursor:pointer;box-shadow:0 7px 0 var(--gold2),0 12px 18px var(--shadow);transition:.15s}
+.btn:hover{transform:translateY(-3px)}.btn:active{transform:translateY(5px);box-shadow:0 2px 0 var(--gold2)}
+.btn.s{font-size:14px;padding:8px 16px;box-shadow:0 4px 0 var(--gold2)}
+.btn.m{background:linear-gradient(var(--m4),var(--m3));color:var(--cream);box-shadow:0 7px 0 var(--m1),0 12px 18px var(--shadow)}
+.card{background:linear-gradient(160deg,#7a1b30,var(--m2));border:3px solid var(--gold);border-radius:22px;padding:18px;box-shadow:0 9px 0 var(--m1),0 16px 26px var(--shadow),inset 0 3px 0 rgba(255,255,255,.2);margin:14px 0}
+.parch{background:linear-gradient(#fff3dc,#f0d9a8);color:var(--ink);border:3px solid var(--gold2);border-radius:18px;padding:16px;box-shadow:0 7px 0 #8a6414,0 12px 18px var(--shadow);font-size:1.05rem;line-height:1.6}
+.hero{text-align:center;padding-top:10px}
+.hero h1{font-size:clamp(1.7rem,6vw,3.2rem);color:var(--gold);text-shadow:0 4px 0 var(--m1),0 8px 14px #000;line-height:1.15}
+.hero p{max-width:560px;margin:10px auto 22px}
+.castle{width:min(560px,95%);filter:drop-shadow(0 18px 14px #000a)}
+.crown{font-size:3.4rem;display:inline-block;animation:fl 3s infinite}
+.flag{transform-origin:left;animation:wave 1.6s infinite}
+.grid{display:grid;gap:14px}.g3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}.g2{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.tp{font-size:1.15rem;line-height:1.6;text-align:center}
+.atp{perspective:700px}.atp .card{transition:.3s;transform:rotateX(0)}.atp .card:hover{transform:rotateX(6deg) translateY(-6px)}
+.badge{display:inline-block;background:var(--gold);color:var(--ink);font-weight:900;border-radius:12px;padding:3px 12px;margin-bottom:6px}
+.sq{aspect-ratio:1;border-radius:24px;border:4px solid var(--ink);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font:900 1.1rem Nunito;color:#fff;padding:10px;transition:.25s;box-shadow:0 11px 0 rgba(0,0,0,.45),0 18px 24px var(--shadow),inset 0 5px 0 rgba(255,255,255,.35)}
+.sq:hover{transform:translateY(-8px) rotate(-2deg) scale(1.03)}.sq .ic{font-size:3.4rem;animation:fl 3.2s infinite}.sq small{font-weight:600;opacity:.9}
+.sq.a{background:linear-gradient(#e0793a,#a63e0e)}.sq.v{background:linear-gradient(#c33a5b,#7a1330)}.sq.av{background:linear-gradient(#8e49b8,#541a7a)}.sq.k{background:linear-gradient(#27ad98,#116152)}
+.modal{position:fixed;inset:0;background:#000c;z-index:50;display:none;align-items:center;justify-content:center;padding:14px}
+.modal.on{display:flex}.mb{max-width:760px;width:100%;max-height:88vh;overflow:auto;background:linear-gradient(160deg,#6d1629,var(--m1));border:4px solid var(--gold);border-radius:24px;padding:20px;animation:pop .4s}
+.x{float:right}
+.line{padding:10px 14px;border-radius:14px;margin:8px 0;background:#ffffff14;border-left:6px solid var(--gold)}.line.on{background:var(--gold);color:var(--ink);transform:scale(1.02)}
+.stage{height:240px;border-radius:20px;background:linear-gradient(#26407a,#8a3b5a 70%,#4a1426);position:relative;overflow:hidden;border:3px solid var(--gold);text-align:center}
+.stage .big{font-size:5rem;margin-top:30px;animation:fl 2.4s infinite}.stage .cap{position:absolute;bottom:0;left:0;right:0;background:#000b;padding:10px;font-weight:700}
+.chip{display:inline-block;margin:5px;padding:9px 14px;border-radius:14px;background:var(--gold);color:var(--ink);font-weight:900;cursor:pointer;border:3px solid var(--ink);box-shadow:0 4px 0 var(--gold2)}.chip.sel{outline:4px solid #fff;transform:scale(1.1)}
+.bucket{min-height:110px;border-radius:18px;border:3px dashed var(--gold);padding:10px;cursor:pointer}
+input,select{width:100%;padding:13px;border-radius:12px;border:3px solid var(--gold2);font:700 16px Nunito;margin:6px 0 14px;background:var(--cream);color:var(--ink)}
+label{font-weight:900;color:var(--gold)}
+.bar{height:16px;border-radius:10px;background:#0006;overflow:hidden;border:2px solid var(--gold2)}.bar b{display:block;height:100%;background:linear-gradient(90deg,var(--gold),#fff3b0);transition:.4s}
+.ans{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.ans button{font:900 clamp(.95rem,3.4vw,1.4rem) Nunito;padding:26px 8px;border-radius:20px;border:4px solid var(--ink);color:#fff;cursor:pointer;transition:.2s}
+.ans button:hover{transform:translateY(-6px) rotate(-1.5deg)}
+.cI{background:linear-gradient(#e7b028,#b07a0a);color:var(--ink)!important;box-shadow:0 9px 0 #6d4a05}.cE{background:linear-gradient(#27ad98,#116152);box-shadow:0 9px 0 #0a3a32}
+.fb{margin-top:14px;padding:12px;border-radius:14px;font-weight:800;animation:pop .3s}.ok{background:#1b7a4a}.no{background:#a01c1c}
+.chests{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+.chest{border-radius:18px;border:4px solid var(--ink);text-align:center;padding:18px 6px;font:900 1rem Nunito;color:#fff;cursor:pointer;box-shadow:0 8px 0 rgba(0,0,0,.5),inset 0 4px 0 rgba(255,255,255,.35);transition:.2s}
+.chest:hover{transform:translateY(-6px)}.chest .ic{font-size:2.6rem;display:block}.chest.lock{filter:grayscale(.8) brightness(.6);cursor:not-allowed}
+.slot{display:flex;gap:10px;align-items:center;padding:10px;margin:8px 0;border-radius:14px;border:3px dashed var(--gold);min-height:58px;cursor:pointer;background:#0003}
+.slot .n{flex:0 0 108px;font-weight:900;color:var(--gold)}.slot.good{border:3px solid #43d17b;background:#1b7a4a55}.slot.bad{border:3px solid #ff6b6b;animation:shake .4s}.slot.hl{box-shadow:0 0 0 4px #fff}
+.piece{background:var(--cream);color:var(--ink);padding:10px 12px;border-radius:12px;margin:7px 0;cursor:pointer;font-weight:700;border:3px solid var(--gold2);box-shadow:0 4px 0 #8a6414;transition:.15s}.piece:hover{transform:translateX(5px)}
+.help{display:flex;gap:8px;flex-wrap:wrap}.help .btn{background:linear-gradient(#b784e0,#7a3fb0);color:#fff}
+table{width:100%;border-collapse:collapse;font-size:.9rem}th,td{padding:8px;border-bottom:1px solid #fff4;text-align:left}tr.r{cursor:pointer}tr.r:hover{background:#fff2}
+.tag{padding:2px 8px;border-radius:8px;background:var(--gold);color:var(--ink);font-weight:900}
+.hide{display:none!important}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+
+.ch{width:104px;height:auto;filter:drop-shadow(0 10px 8px #0009);animation:bob 3s ease-in-out infinite;flex:0 0 auto}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-12px) rotate(2deg)}}
+@keyframes jump{0%,100%{transform:translateY(0)}40%{transform:translateY(-34px) scale(1.12) rotate(6deg)}}
+@keyframes flyx{from{left:-120px;top:14%}50%{top:22%}to{left:110vw;top:12%}}
+@keyframes drift{from{transform:translateX(-30vw)}to{transform:translateX(130vw)}}
+@keyframes fall{to{transform:translateY(105vh) rotate(720deg);opacity:.9}}
+@keyframes flick{0%,100%{transform:scale(1) rotate(-4deg)}50%{transform:scale(1.25,1.4) rotate(5deg)}}
+@keyframes wig{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+.fly{position:fixed;width:84px;z-index:3;pointer-events:none;animation:flyx 26s linear infinite}
+.cloud{position:fixed;z-index:0;background:#fff;opacity:.08;border-radius:60px;height:44px;pointer-events:none;animation:drift linear infinite}
+.cf{position:fixed;top:-20px;width:10px;height:15px;z-index:90;pointer-events:none;animation:fall 2.5s linear forwards}
+.hero{position:relative}.torch{position:absolute;top:150px;font-size:2.2rem;animation:flick .7s infinite;filter:drop-shadow(0 0 14px #ff9a1f)}
+.cast{display:flex;justify-content:center;align-items:flex-end;gap:6px;margin:-14px 0 6px;flex-wrap:wrap}
+.cast .ch:nth-child(2){width:128px;animation-delay:.5s}.cast .ch:nth-child(3){animation-delay:1s}.cast .ch:nth-child(4){width:84px;animation-delay:1.5s}
+.guide{display:flex;align-items:flex-end;gap:12px;margin:6px 0 10px}.guide .ch{width:84px}
+.bub{position:relative;background:var(--cream);color:var(--ink);font-weight:800;padding:10px 14px;border-radius:18px;border:3px solid var(--ink);box-shadow:0 5px 0 #0006;animation:pop .5s;max-width:420px}
+.bub:before{content:"";position:absolute;left:-14px;bottom:14px;border:8px solid transparent;border-right:12px solid var(--ink)}
+.mrow{display:flex;gap:12px;align-items:flex-end;margin-top:14px}.mrow .parch{flex:1}.mcol{text-align:center;flex:0 0 112px}.mcol .ch{width:100px}
+.ch.happy{animation:jump .6s}.ch.sad{animation:shake .5s,none}
+.sq,.chest,.card.tilt{will-change:transform}.chest:not(.lock){animation:wig 2.5s infinite}
+.snd{position:fixed;right:10px;top:calc(env(safe-area-inset-top,0px) + 62px);z-index:30;width:46px;height:46px;border-radius:50%;border:3px solid var(--ink);background:linear-gradient(#ffd96b,#e0a526);font-size:1.3rem;cursor:pointer;box-shadow:0 5px 0 var(--gold2)}
+.toast{position:fixed;left:50%;bottom:30px;transform:translate(-50%,40px);z-index:99;opacity:0;pointer-events:none;background:linear-gradient(#b784e0,#7a3fb0);color:#fff;font-weight:900;padding:14px 22px;border-radius:18px;border:3px solid #fff;box-shadow:0 8px 0 #3d1a66;transition:.3s;max-width:90vw;text-align:center}.toast.on{opacity:1;transform:translate(-50%,0)}
+nav button:nth-child(5n+1){background:#c0392b}nav button:nth-child(5n+2){background:#1f6fb0}nav button:nth-child(5n+3){background:#1f9a86}nav button:nth-child(5n+4){background:#7b45b0}nav button:nth-child(5n){background:#d9528a}
+nav button.on{background:var(--gold)!important;color:var(--ink)!important;transform:translateY(-2px) scale(1.08)}
+.btn.b{background:linear-gradient(#5ac8fa,#1f6fb0);color:#fff;box-shadow:0 7px 0 #0f3d66,0 12px 18px var(--shadow)}
+.btn.p{background:linear-gradient(#c58cf0,#7a3fb0);color:#fff;box-shadow:0 7px 0 #3d1a66,0 12px 18px var(--shadow)}
+.btn.g{background:linear-gradient(#5be08a,#1b9a54);color:#fff;box-shadow:0 7px 0 #0b5a30,0 12px 18px var(--shadow)}
+.btn.o{background:linear-gradient(#ff9f5a,#d9531a);color:#fff;box-shadow:0 7px 0 #7a2a06,0 12px 18px var(--shadow)}
+.btn.x{background:linear-gradient(#ff7a8a,#c0283e)!important;color:#fff!important;box-shadow:0 4px 0 #6a1020!important}
+.help .btn:nth-child(1){background:linear-gradient(#5be08a,#1b9a54)}.help .btn:nth-child(2){background:linear-gradient(#c58cf0,#7a3fb0)}.help .btn:nth-child(3){background:linear-gradient(#5ac8fa,#1f6fb0)}.help .btn:nth-child(4){background:linear-gradient(#f08ad0,#c0307f)}
+.mb.ma{background:linear-gradient(160deg,#b8571c,#4a1a05);border-color:#ffb066}.mb.mv{background:linear-gradient(160deg,#c33a5b,#4a0d1f);border-color:#ff9ab0}.mb.mav{background:linear-gradient(160deg,#8e49b8,#2c0d45);border-color:#d7a8ff}.mb.mk{background:linear-gradient(160deg,#1f9a86,#06342d);border-color:#7ff0d8}
+.fb.ok{background:linear-gradient(#2fc277,#1b7a4a)}.fb.no{background:linear-gradient(#e24b4b,#a01c1c)}
+.lb{display:flex;align-items:center;gap:12px;padding:12px;border-radius:20px;border:4px solid var(--ink);margin:12px 0;color:#fff;box-shadow:0 8px 0 rgba(0,0,0,.5),inset 0 4px 0 rgba(255,255,255,.3);animation:pop .5s backwards}
+.lb .md{font-size:2.4rem;width:52px;text-align:center}.lb .ch{width:62px}.lb .bd{flex:1}.lb .bar{margin-top:6px;background:#0005}.lb .bar b{background:linear-gradient(90deg,#fff3b0,#fff)}
+.lb .pt{font:900 1.6rem "Cinzel Decorative",serif;text-align:right}.lb small{opacity:.9;font-weight:700}
+@media(max-width:560px){.mcol{flex-basis:78px}.mcol .ch{width:70px}.lb .ch{display:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="gR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8506d"/><stop offset="1" stop-color="#7a0f26"/></linearGradient>
+<linearGradient id="gG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe08a"/><stop offset="1" stop-color="#d9a21c"/></linearGradient>
+<linearGradient id="gP" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f08ad0"/><stop offset="1" stop-color="#8a3fb8"/></linearGradient>
+<linearGradient id="gS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8edf2"/><stop offset="1" stop-color="#8793a3"/></linearGradient>
+<linearGradient id="gN" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6be08a"/><stop offset="1" stop-color="#1d9a5c"/></linearGradient>
+<symbol id="raja" viewBox="0 0 100 130"><g stroke="#2a0810" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><path d="M12 128Q10 82 50 78Q90 82 88 128Z" fill="url(#gR)"/><path d="M38 79L50 104L62 79Z" fill="url(#gG)"/><circle cx="50" cy="50" r="27" fill="#f7cfa4"/><path d="M25 56Q28 96 50 98Q72 96 75 56Q62 76 50 72Q38 76 25 56Z" fill="#f4f0ea"/><path d="M24 34L28 8L40 22L50 3L60 22L72 8L76 34Z" fill="url(#gG)"/><circle cx="50" cy="16" r="4.5" fill="#e8506d"/><path d="M36 40Q41 36 46 40M54 40Q59 36 64 40" fill="none"/><circle cx="41" cy="48" r="3.4" fill="#2a0810" stroke="none"/><circle cx="59" cy="48" r="3.4" fill="#2a0810" stroke="none"/><path d="M43 63Q50 69 57 63" fill="none"/></g><ellipse cx="38" cy="38" rx="9" ry="4" fill="#fff" opacity=".4"/><circle cx="31" cy="56" r="5" fill="#ff8fa0" opacity=".55"/><circle cx="69" cy="56" r="5" fill="#ff8fa0" opacity=".55"/></symbol>
+<symbol id="puteri" viewBox="0 0 100 130"><g stroke="#2a0810" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><path d="M16 70Q8 18 50 12Q92 18 84 70Q88 112 70 126L60 92H40L30 126Q12 112 16 70Z" fill="#3a1a2a"/><path d="M14 128Q14 86 50 82Q86 86 86 128Z" fill="url(#gP)"/><circle cx="50" cy="54" r="26" fill="#f7cfa4"/><path d="M24 52Q28 20 50 24Q72 20 76 52Q64 36 50 36Q36 36 24 52Z" fill="#3a1a2a"/><path d="M30 26L38 12L46 24L50 8L54 24L62 12L70 26Z" fill="url(#gG)"/><circle cx="50" cy="17" r="4" fill="#4dd0e1"/><circle cx="40" cy="54" r="4.5" fill="#2a0810"/><circle cx="60" cy="54" r="4.5" fill="#2a0810"/><path d="M43 66Q50 72 57 66" fill="none"/></g><circle cx="41.5" cy="52.5" r="1.6" fill="#fff"/><circle cx="61.5" cy="52.5" r="1.6" fill="#fff"/><ellipse cx="38" cy="38" rx="8" ry="3.5" fill="#fff" opacity=".35"/><circle cx="31" cy="62" r="5" fill="#ff8fa0" opacity=".6"/><circle cx="69" cy="62" r="5" fill="#ff8fa0" opacity=".6"/><path d="M40 100l4 8-8-4 9 0-7 6z" fill="#fff" opacity=".7"/></symbol>
+<symbol id="ksatria" viewBox="0 0 100 130"><g stroke="#2a0810" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><path d="M50 16Q40 2 52 2Q68 4 62 18Z" fill="url(#gR)"/><path d="M14 128Q14 84 50 80Q86 84 86 128Z" fill="url(#gS)"/><circle cx="50" cy="104" r="8" fill="url(#gG)"/><rect x="28" y="38" width="44" height="40" rx="14" fill="#f7cfa4"/><path d="M22 52Q20 12 50 12Q80 12 78 52L68 42H32Z" fill="url(#gS)"/><path d="M50 12V40" fill="none"/><circle cx="41" cy="55" r="3.4" fill="#2a0810" stroke="none"/><circle cx="59" cy="55" r="3.4" fill="#2a0810" stroke="none"/><path d="M43 67Q50 72 57 67" fill="none"/><path d="M0 92h24v18Q12 126 0 110Z" fill="url(#gR)"/><path d="M92 40V126" stroke="#8793a3" stroke-width="6"/></g><ellipse cx="38" cy="26" rx="8" ry="3.5" fill="#fff" opacity=".5"/></symbol>
+<symbol id="nuri" viewBox="0 0 100 100"><g stroke="#2a0810" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><path d="M24 62L2 90L30 80Z" fill="#e8506d"/><ellipse cx="48" cy="60" rx="28" ry="24" fill="url(#gN)"/><path d="M30 58Q50 44 68 64Q50 80 30 68Z" fill="#167a5a"/><circle cx="66" cy="38" r="18" fill="url(#gN)"/><path d="M52 28Q60 14 74 22Q64 22 60 34Z" fill="#e8506d"/><path d="M80 36Q98 38 90 50Q82 48 80 44Z" fill="url(#gG)"/><circle cx="70" cy="34" r="4" fill="#fff"/><circle cx="71" cy="34" r="2" fill="#2a0810" stroke="none"/></g><ellipse cx="42" cy="46" rx="8" ry="3" fill="#fff" opacity=".4"/></symbol>
+</defs></svg>
+<div class="stars" id="stars"></div>
+<svg class="ch fly" viewBox="0 0 100 100"><use href="#nuri"/></svg>
+<button class="snd" id="snd" onclick="musik(!musicOn)" title="Backsound">🎵</button>
+<div id="toast" class="toast"></div>
+<nav id="nav"></nav>
+<main>
+
+<section class="scr on hero" id="s0">
+  <div class="crown">👑</div>
+  <svg class="castle" viewBox="0 0 560 260" aria-label="Istana kartun">
+    <defs><linearGradient id="w" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d98a96"/><stop offset=".5" stop-color="#f6d7b9"/><stop offset="1" stop-color="#b9606f"/></linearGradient>
+    <linearGradient id="r" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9304f"/><stop offset="1" stop-color="#7a0f26"/></linearGradient></defs>
+    <ellipse cx="280" cy="245" rx="260" ry="14" fill="#0006"/>
+    <g stroke="#2a0810" stroke-width="4" stroke-linejoin="round">
+      <rect x="40" y="90" width="70" height="150" rx="6" fill="url(#w)"/><polygon points="30,92 75,20 120,92" fill="url(#r)"/>
+      <rect x="450" y="90" width="70" height="150" rx="6" fill="url(#w)"/><polygon points="440,92 485,20 530,92" fill="url(#r)"/>
+      <rect x="110" y="130" width="340" height="110" rx="6" fill="url(#w)"/>
+      <rect x="215" y="40" width="130" height="200" rx="8" fill="url(#w)"/><polygon points="205,44 280,-20 355,44" fill="url(#r)"/>
+      <path d="M245 240v-55a35 35 0 0 1 70 0v55z" fill="#5c1020"/>
+      <rect x="62" y="130" width="26" height="36" rx="13" fill="#5c1020"/><rect x="472" y="130" width="26" height="36" rx="13" fill="#5c1020"/>
+      <rect x="250" y="80" width="60" height="40" rx="20" fill="#f2c14e"/>
+    </g>
+    <g class="flag"><line x1="280" y1="-20" x2="280" y2="-50" stroke="#2a0810" stroke-width="4"/><polygon points="280,-50 325,-38 280,-26" fill="#f2c14e" stroke="#2a0810" stroke-width="3"/></g>
+  </svg>
+  <div class="torch" style="left:5%">🔥</div><div class="torch" style="right:5%">🔥</div>
+  <div class="cast"><svg class="ch"><use href="#ksatria"/></svg><svg class="ch"><use href="#raja"/></svg><svg class="ch"><use href="#puteri"/></svg><svg class="ch"><use href="#nuri"/></svg></div>
+  <h1>Menyusuri Nilai dalam Cerita Lintas Zaman</h1>
+  <p>Mari menjelajah istana hikayat, menemukan pesan dan nilai berharga dari kisah raja, puteri, dan para pahlawan masa lampau.</p>
+  <button class="btn" onclick="go(1)">⚔️ Mulai Perjalanan</button>
+</section>
+
+<section class="scr" id="s1">
+  <h2>📜 Tujuan Pembelajaran</h2><div class="guide"><svg class="ch"><use href="#ksatria"/></svg><div class="bub">Inilah titah tujuan belajar kita, wahai ksatria cilik!</div></div>
+  <div class="card parch tp"><b>Murid mampu mengevaluasi nilai-nilai moral, pesan, serta unsur pembangun (intrinsik dan ekstrinsik) dari teks sastra klasik (Hikayat) berbentuk aural secara kritis.</b></div>
+  <div class="grid g3 atp">
+    <div class="card"><span class="badge">ATP 1.1</span><p>Murid mampu mengidentifikasi informasi penting dan gambaran umum isi teks hikayat yang disimak, dibaca, dan/atau dipirsa secara tepat.</p></div>
+    <div class="card"><span class="badge">ATP 1.2</span><p>Murid mampu mengidentifikasi struktur teks hikayat (abstrak, orientasi, komplikasi, evaluasi, resolusi, koda), unsur intrinsik (tema, tokoh dan penokohan, alur, latar, sudut pandang, amanat) berdasarkan bukti dalam teks, serta unsur ekstrinsik (nilai pendidikan, moral, sosial, religius, dan budaya).</p></div>
+    <div class="card"><span class="badge">ATP 1.3</span><p>Murid mampu menganalisis hubungan antarunsur intrinsik dan ekstrinsik dalam membangun cerita pada teks hikayat berdasarkan informasi yang ditemukan.</p></div>
+  </div>
+  <button class="btn b" onclick="go(2)">Pilih Gaya Belajar ➜</button>
+</section>
+
+<section class="scr" id="s2">
+  <h2>🏰 Gerbang Materi</h2><div class="guide"><svg class="ch"><use href="#puteri"/></svg><div class="bub">Pilih ruanganmu. Setiap pintu menyimpan harta ilmu!</div></div>
+  <p>Pilih ruangan belajar yang paling cocok denganmu. Setiap ruangan menyajikan materi yang sama dengan cara berbeda!</p>
+  <div class="grid g2">
+    <div class="sq a" onclick="mode('a')"><span class="ic">🎧</span>AUDITORI<small>Dengarkan narasi</small></div>
+    <div class="sq v" onclick="mode('v')"><span class="ic">🖼️</span>VISUAL<small>Lihat peta & kartu</small></div>
+    <div class="sq av" onclick="mode('av')"><span class="ic">🎬</span>AUDIOVISUAL<small>Teater istana</small></div>
+    <div class="sq k" onclick="mode('k')"><span class="ic">🤹</span>KINESTETIK<small>Pilah & praktik</small></div>
+  </div>
+  <button class="btn p" style="margin-top:24px" onclick="go(3)">Baca Ringkasan Materi ➜</button>
+</section>
+
+<section class="scr" id="s3">
+  <h2>📚 Materi Ringkas</h2><div class="guide"><svg class="ch"><use href="#raja"/></svg><div class="bub">Simaklah titah baginda ini baik-baik, anakku.</div></div>
+  <div class="card parch"><b>Hikayat</b> ialah karya sastra Melayu klasik berupa kisah tentang raja, bangsawan, dan pahlawan, sering memuat unsur kesaktian, dan awalnya dituturkan secara lisan (aural) sebelum dituliskan.</div>
+  <div class="grid g3">
+    <div class="card"><h3>🧩 Struktur</h3><ol><li><b>Abstrak</b>: ringkasan pembuka</li><li><b>Orientasi</b>: latar, waktu, tokoh</li><li><b>Komplikasi</b>: munculnya masalah</li><li><b>Evaluasi</b>: tanggapan atas masalah</li><li><b>Resolusi</b>: penyelesaian</li><li><b>Koda</b>: penutup/pesan</li></ol></div>
+    <div class="card"><h3>🛡️ Intrinsik</h3><p>Unsur <i>di dalam</i> teks: <b>tema</b>, <b>tokoh &amp; penokohan</b>, <b>alur</b>, <b>latar</b> (tempat, waktu, suasana), <b>sudut pandang</b>, dan <b>amanat</b>.</p></div>
+    <div class="card"><h3>🌍 Ekstrinsik</h3><p>Unsur <i>di luar</i> teks yang memengaruhi isi: nilai <b>pendidikan</b>, <b>moral</b>, <b>sosial</b>, <b>religius</b>, dan <b>budaya</b>.</p></div>
+  </div>
+  <div class="card parch">🔗 <b>Hubungan antarunsur:</b> tokoh yang jujur (intrinsik) mencerminkan nilai moral (ekstrinsik); latar istana dan adat bersanding menunjukkan nilai budaya; alur dari konflik menuju damai menegaskan amanat. Carilah <b>bukti dalam kutipan</b> sebelum menentukan jawaban!</div>
+  <button class="btn g" onclick="go(4)">Siap Bermain ➜</button>
+</section>
+
+<section class="scr" id="s4">
+  <h2>🪪 Daftar Ksatria</h2><div class="guide"><svg class="ch"><use href="#nuri"/></svg><div class="bub">Tuliskan namamu agar hamba dapat mencatatnya!</div></div>
+  <div class="card">
+    <label>NAMA LENGKAP</label><input id="nama" placeholder="Nama lengkap" autocomplete="off">
+    <label>KELAS</label><input id="kelas" placeholder="Contoh: X-3">
+    <label>KELOMPOK</label><select id="kel"><option value="">— pilih kelompok —</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+    <button class="btn o" onclick="startGame()">🎮 Masuk Arena Game</button>
+  </div>
+</section>
+
+<section class="scr" id="s5">
+  <h2>⚔️ Arena: Intrinsik atau Ekstrinsik?</h2>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;font-weight:900"><span id="gk"></span><span id="gs"></span></div>
+    <div class="bar"><b id="gb" style="width:0"></b></div>
+    <div class="mrow"><div class="mcol"><div class="bub" id="bub" style="font-size:.8rem;padding:6px 9px;margin-bottom:10px">Ayo tentukan!</div><svg class="ch" id="mas"><use id="mu" href="#raja"/></svg></div><div class="parch" id="gq"></div></div>
+    <div class="ans"><button class="cI" onclick="jawab('I')">🛡️ INTRINSIK</button><button class="cE" onclick="jawab('E')">🌍 EKSTRINSIK</button></div>
+    <div id="gf"></div>
+  </div>
+</section>
+
+<section class="scr" id="s6">
+  <h2>🗝️ Asesmen: Susun Struktur Hikayat</h2><div class="guide"><svg class="ch"><use href="#puteri"/></svg><div class="bub">Buka kotak kelompokmu dan susun kisahnya dengan benar!</div></div>
+  <div id="chests" class="grid chests"></div>
+  <div id="puz" class="hide">
+    <div class="card"><b id="pt"></b><p>Ketuk potongan teks untuk menaruhnya ke kotak urutan. Ketuk potongan di kotak untuk mengembalikannya.</p>
+      <div id="slots"></div>
+      <h3>Potongan Teks (acak)</h3><div id="pool"></div>
+      <div class="help"><button class="btn s" onclick="cek()">✅ Periksa</button><button class="btn s" onclick="bantu(1)">🃏 Kartu Ciri</button><button class="btn s" onclick="bantu(2)">🃏 Kartu Petunjuk</button><button class="btn s" onclick="bantu(3)">🃏 Kartu Awal Kata</button></div>
+      <div id="pf"></div>
+      <button class="btn m" style="margin-top:14px" onclick="kumpul()">📨 Kumpulkan ke Guru</button>
+    </div>
+  </div>
+</section>
+
+<section class="scr hero" id="s7">
+  <div class="crown">🏆</div><h2 style="font-size:2rem;color:var(--gold)">Titah Diterima!</h2>
+  <p id="done"></p><button class="btn o" onclick="go(9)">🏆 Lihat Papan Peringkat</button> <button class="btn" onclick="go(0)">Gerbang Istana</button>
+</section>
+
+<section class="scr" id="s9">
+  <h2>🏆 Papan Peringkat Kelompok</h2><div class="guide"><svg class="ch"><use href="#raja"/></svg><div class="bub">Kelompok mana yang paling gemilang? Skor = game + susunan struktur (maks. 100), dirata-rata per anggota.</div></div>
+  <div id="pp"></div><button class="btn g" onclick="papan()">↻ Perbarui Peringkat</button>
+</section>
+
+<section class="scr" id="s8">
+  <h2>👨‍🏫 Ruang Guru</h2><div id="guru"></div>
+</section>
+</main>
+
+<div class="modal" id="modal"><div class="mb" id="mbx"><button class="btn s x" onclick="tutup()">✖ Tutup</button><div id="mc"></div></div></div>
+
+<script>
+const NAV=["🏰 Gerbang","📜 Tujuan","🚪 Materi","📚 Ringkas","🪪 Daftar","⚔️ Game","🗝️ Asesmen","🏆 Peringkat","👨‍🏫 Guru"];
+const NID=[0,1,2,3,4,5,6,9,8];
+const NM=["Abstrak","Orientasi","Komplikasi","Evaluasi","Resolusi","Koda"];
+const DEF=["Pembuka yang meringkas isi kisah","Pengenalan latar, waktu, dan tokoh","Munculnya masalah atau konflik","Tanggapan atau penilaian atas masalah","Penyelesaian masalah","Penutup, kesudahan, atau pesan"];
+const EX=[[
+"Istana Indra Kencana bertatahkan permata dan dikelilingi taman bunga yang harum.|I|Latar tempat",
+"Dengan hati lapang, baginda memaafkan hamba yang telah khilaf.|E|Nilai moral (pemaaf)",
+"Seluruh rakyat membawa hasil bumi untuk dibagikan kepada fakir miskin.|E|Nilai sosial",
+"Ketika fajar menyingsing, gamelan dipalu menyambut titah raja.|E|Nilai budaya",
+"Rakyat resah mendengar mahkota hendak direbut, tetapi baginda tetap tenang.|I|Alur (konflik memuncak)",
+"Kesombongan membinasakan, keadilan menyelamatkan; demikianlah pesan kisah ini.|I|Amanat"],[
+"Hujan turun deras di lembah itu, dan sungai meluap membasahi ladang.|I|Latar suasana",
+"Tuan Guru mengajarkan bahwa budi pekerti lebih mulia daripada harta.|E|Nilai pendidikan",
+"Si Kalam tidak pernah menyimpan dendam kepada orang yang menghinanya.|I|Penokohan",
+"Pada hari panen, warga dusun menggelar kenduri dan berdoa bersama.|E|Nilai religius dan budaya",
+"Berkumpullah seluruh warga menggali saluran air bersama-sama.|E|Nilai sosial (gotong royong)",
+"Penutur menyebut Si Kalam dengan kata “ia” sepanjang cerita.|I|Sudut pandang orang ketiga"],[
+"Taman istana dipenuhi bunga cempaka yang mekar di bawah sinar bulan.|I|Latar tempat dan suasana",
+"Puteri berkata santun, “Kekerasan tidak akan menyelesaikan persoalan.”|E|Nilai moral",
+"Para dayang menyulam kain songket untuk upacara kerajaan.|E|Nilai budaya",
+"Hamba berdiri di balik tirai dan mendengar sendiri titah sang puteri.|I|Sudut pandang orang pertama",
+"Kisah ini bertema keberanian dan ketulusan seorang puteri menjaga negeri.|I|Tema",
+"Tabib istana mengajari para dayang meracik ramuan penyembuh.|E|Nilai pendidikan"],[
+"Malam itu ombak bergemuruh dan layar kapal berkibar ditiup angin barat.|I|Latar suasana",
+"Hang Setia sabar menahan lapar di penjara tanpa mengeluh.|I|Penokohan",
+"Para saudagar negeri jauh disambut dengan hormat menurut adat bandar.|E|Nilai budaya",
+"Mendengar fitnah itu, ia bersujud memohon pertolongan Yang Maha Kuasa.|E|Nilai religius",
+"Setelah kebenaran terbukti, baginda memeluk sang laksamana dan memohon maaf.|I|Alur (resolusi)",
+"Rakyat bahu-membahu memperbaiki dermaga yang rusak diterjang badai.|E|Nilai sosial"],[
+"Di balik jendela menara, anak raja memandang langit yang kemerahan.|I|Latar tempat dan waktu",
+"Burung nuri itu cerdik dan setia, tetapi tidak suka dikurung.|I|Penokohan",
+"Anak raja belajar menulis aksara dari seorang pujangga istana.|E|Nilai pendidikan",
+"Kisah ini bertema penyesalan dan keteguhan menepati janji.|I|Tema",
+"Jangan kau ingkari janji, sebab kepercayaan sukar dipulihkan.|I|Amanat",
+"Rakyat menabuh gendang menyambut pulangnya sang nuri ke istana.|E|Nilai budaya"],[
+"Pasar negeri Perca riuh oleh suara pedagang dan harum rempah-rempah.|I|Latar suasana",
+"Saudagar itu berpegang pada nasihat orang tua agar tidak menipu pembeli.|E|Nilai moral",
+"Menjelang magrib, ia bergegas menunaikan sembahyang di surau.|E|Nilai religius",
+"Penutur menyebut saudagar itu “beliau” dari luar cerita.|I|Sudut pandang orang ketiga",
+"Tetangga bergantian menjenguk dan menyuapi saudagar yang jatuh sakit.|E|Nilai sosial",
+"Dibukanya kembali kedai kecil dengan modal pinjaman yang dilunasinya jujur.|I|Alur (resolusi)"]];
+// 6 kelompok x 16 kutipan (10 diundi tiap bermain): teks | I/E | alasan
+const G=[[
+"Syahdan, pada zaman dahulu berdirilah negeri Indra Kencana di tepi laut yang luas.|I|Latar tempat dan waktu",
+"Maka Raja Mahadewa dikenal arif lagi adil, tiada pernah memihak kepada yang bersalah.|I|Penokohan (watak tokoh)",
+"Barang siapa berlaku jujur, niscaya hidupnya dimuliakan dan namanya harum.|E|Nilai moral",
+"Setiap pagi rakyat berkumpul di balai rung seri untuk bermusyawarah bersama baginda.|E|Nilai budaya (adat musyawarah)",
+"Hatta, datanglah seorang menteri durhaka yang hendak merebut mahkota baginda.|I|Alur (munculnya konflik)",
+"Dengan mengucap bismillah, baginda menyerahkan segala perkara kepada Tuhan Yang Maha Esa.|E|Nilai religius",
+"Adapun hamba yang hina ini menuturkan kisah baginda sebagaimana yang hamba ketahui.|I|Sudut pandang orang pertama",
+"Kisah ini berkisah tentang kejujuran dan keadilan yang mengalahkan kelicikan.|I|Tema",
+"Anak-anak negeri itu dididik membaca kitab dan menimba ilmu sejak usia tujuh tahun.|E|Nilai pendidikan",
+"Hendaklah pembaca mengambil teladan agar tidak tamak akan kuasa.|I|Amanat"],[
+"Pada suatu masa, di dusun kaki Gunung Sakti, hiduplah anak yatim bernama Si Kalam.|I|Latar dan tokoh",
+"Si Kalam rajin lagi rendah hati, walau sering dihina oleh anak saudagar.|I|Penokohan",
+"Para penduduk bergotong royong membangun balai tanpa mengharap upah.|E|Nilai sosial",
+"Sebelum belajar, anak-anak mencium tangan guru sebagai tanda hormat.|E|Nilai budaya (adab)",
+"Tiba-tiba kemarau panjang melanda, sumur pun kering dan timbullah huru-hara.|I|Alur (komplikasi)",
+"Si Kalam bersujud syukur kepada Allah setelah hujan turun membasahi bumi.|E|Nilai religius",
+"Konon, Si Kalam menyusun akal membuat saluran air dari sungai di balik bukit.|I|Alur (penyelesaian)",
+"Kata guru, ilmu yang tinggi menuntun manusia pada budi yang luhur.|E|Nilai pendidikan",
+"Hikayat ini bertema perjuangan anak miskin meraih ilmu demi menolong sesama.|I|Tema",
+"Barang siapa menuntut ilmu dengan sabar, kelak ia mulia di mata sesama.|I|Amanat"],[
+"Alkisah, di dalam istana bertiang emas bersemayamlah Puteri Cempaka Biru yang molek parasnya.|I|Latar dan tokoh",
+"Sang puteri tulus hatinya, suka menolong dayang yang ditimpa sakit.|I|Penokohan",
+"Pada malam purnama, kerajaan menggelar pesta panen dengan tarian dan gamelan.|E|Nilai budaya",
+"Puteri tidak membeda-bedakan rakyat jelata dengan para bangsawan.|E|Nilai sosial",
+"Maka timbullah perselisihan tatkala Pangeran Seberang meminang puteri dengan paksa.|I|Alur (komplikasi)",
+"Setiap subuh puteri berdoa memohon petunjuk agar negeri dilindungi dari bencana.|E|Nilai religius",
+"Akhirnya perang pun urung dan kedua negeri hidup berdamai.|I|Alur (resolusi)",
+"Hamba yang menyaksikan segala peristiwa itu sendiri, lalu hamba tuturkan kembali.|I|Sudut pandang orang pertama",
+"Dayang diajarkan menenun dan menulis aksara agar kelak mandiri.|E|Nilai pendidikan",
+"Ketulusan dan keberanian membela kebenaran akan membawa damai.|I|Amanat"],[
+"Tersebutlah seorang laksamana bernama Hang Setia, gagah perkasa dan teguh memegang janji.|I|Tokoh dan penokohan",
+"Di bandar Malaka yang ramai itu, kapal dagang berlabuh setiap hari.|I|Latar",
+"Pantang bagi Hang Setia mengkhianati rajanya, walau nyawa menjadi taruhan.|E|Nilai moral (kesetiaan)",
+"Para pembesar duduk bersila menurut tingkat kedudukannya dalam sidang adat.|E|Nilai budaya",
+"Sesudah itu fitnah disebarkan pembesar yang iri hati, sehingga baginda murka.|I|Alur (konflik)",
+"Hang Setia menyerahkan nasibnya kepada Tuhan seraya bertawakal.|E|Nilai religius",
+"Nelayan dan saudagar saling bertukar hasil dengan adil dan rukun.|E|Nilai sosial",
+"Kisah ini bertema kesetiaan seorang hamba yang diuji oleh fitnah.|I|Tema",
+"Anak-anak diajari ilmu pelayaran dan ilmu bintang oleh pelaut tua.|E|Nilai pendidikan",
+"Janganlah mudah percaya pada kabar tanpa menyelidikinya terlebih dahulu.|I|Amanat"],[
+"Pada waktu senja, di taman larangan istana, anak raja menemukan burung nuri bersuara merdu.|I|Latar waktu dan tempat",
+"Anak raja itu pemurah dan penyayang, tetapi mudah lupa akan janjinya.|I|Penokohan",
+"Si nuri menasihati, “Berbuat baiklah, sebab kebaikan akan kembali kepadamu.”|E|Nilai moral",
+"Raja menyambut tetamu asing dengan jamuan sirih pinang menurut adat.|E|Nilai budaya",
+"Maka lepaslah burung itu dari sangkar karena kelalaian sang anak raja.|I|Alur (komplikasi)",
+"Dengan khusyuk mereka bersyukur kepada Tuhan atas selamatnya negeri dari wabah.|E|Nilai religius",
+"Rakyat saling menolong menjaga yang lemah ketika wabah melanda.|E|Nilai sosial",
+"Ia pun menyesal, lalu belajar menepati janji.|I|Alur (resolusi)",
+"Penutur bercerita sebagai pihak di luar cerita, menyebut tokoh dengan “ia” dan “baginda”.|I|Sudut pandang orang ketiga",
+"Orang bijak diutus mengajarkan hukum dan budi pekerti kepada rakyat.|E|Nilai pendidikan"],[
+"Adapun di negeri Perca hiduplah saudagar kaya bernama Tuan Sulaiman.|I|Tokoh dan latar",
+"Beliau murah tangan, namun kadang tinggi hati akan hartanya.|I|Penokohan",
+"Saudagar itu bersedekah kepada fakir miskin setiap hari Jumat.|E|Nilai religius",
+"Pada upacara pernikahan, mempelai disandingkan di pelaminan menurut adat bersanding.|E|Nilai budaya",
+"Setelah permata itu dicuri, saudagar jatuh miskin dan dihina orang.|I|Alur (komplikasi)",
+"Jiran tetangga datang membawa beras dan kain untuk meringankan bebannya.|E|Nilai sosial",
+"Tema hikayat ini ialah kesombongan harta yang berujung penyesalan.|I|Tema",
+"Anak saudagar dikirim menuntut ilmu dagang dan ilmu agama ke negeri seberang.|E|Nilai pendidikan",
+"Harta hanyalah titipan, janganlah sombong karenanya, wahai pembaca.|I|Amanat",
+"Tuan Sulaiman akhirnya berniaga dengan jujur, tiada lagi mengurangi timbangan.|E|Nilai moral"]
+].map((g,gi)=>g.concat(EX[gi]).map(s=>{const p=s.split("|");return{t:p[0],a:p[1],r:p[2]}}));
+// 6 kotak struktur (urutan benar)
+const ST=[
+["Inilah hikayat Raja Mahadewa, raja adil yang dicintai rakyat negeri Indra Kencana.","Alkisah, Indra Kencana negeri makmur, dan Raja Mahadewa memerintah dengan arif bijaksana.","Datanglah Menteri Sakti yang iri lalu merencanakan perampasan mahkota baginda.","Rakyat resah, namun baginda tetap tenang dan memohon petunjuk Tuhan.","Akhirnya kecurangan menteri terbongkar dan ia diusir dari negeri.","Maka kembalilah kemakmuran, dan kisah itu dikenang sepanjang zaman."],
+["Inilah hikayat Si Kalam, anak yatim yang mengangkat negeri dengan ilmunya.","Di dusun kaki Gunung Sakti, Si Kalam hidup miskin tetapi rajin belajar pada Tuan Guru.","Kemarau panjang tiba, sumur kering, dan penduduk bertengkar berebut air.","Si Kalam merenung, ilmu yang disimpannya patut dipakai untuk menolong semua orang.","Ia membuat saluran dari sungai bukit, dan air kembali mengalir ke dusun.","Sejak itu Si Kalam digelari Pandai Hulu, dan dusun itu hidup makmur."],
+["Inilah hikayat Puteri Cempaka Biru yang tulus hati dan berani.","Di istana bertiang emas, Puteri Cempaka Biru dicintai dayang dan rakyat jelata.","Pangeran Seberang datang meminang dengan paksa dan mengancam menyerang negeri.","Puteri gundah, tetapi ia berdoa dan bermusyawarah dengan para pembesar.","Puteri berunding dengan lemah lembut hingga sang pangeran insaf dan berdamai.","Kedua negeri bersahabat, dan nama sang puteri harum dikenang orang."],
+["Inilah hikayat Hang Setia, laksamana yang teguh memegang janji kepada rajanya.","Di bandar Malaka yang ramai, Hang Setia menjaga laut atas titah baginda.","Pembesar yang iri memfitnah Hang Setia sehingga raja murka dan menjatuhkan hukuman.","Dalam penjara, Hang Setia tetap sabar dan tidak menaruh dendam.","Kebenaran akhirnya terungkap, dan baginda memulihkan kedudukan sang laksamana.","Sejak itu raja berhati-hati menimbang kabar, dan Hang Setia dikenang sebagai teladan."],
+["Inilah hikayat anak raja dan burung nuri yang mengajarkan arti menepati janji.","Pada senja di taman larangan, anak raja menemukan nuri yang pandai bertutur.","Karena lalai, sangkar terbuka dan nuri terbang meninggalkan istana.","Anak raja menyesali kelalaiannya dan merasa janjinya tiada berharga.","Ia mencari nuri dengan sabar hingga burung itu kembali dengan sukarela.","Sejak itu anak raja tidak lagi ingkar janji."],
+["Inilah hikayat Tuan Sulaiman, saudagar yang belajar bahwa harta hanyalah titipan.","Di negeri Perca, Tuan Sulaiman kaya raya dan terkenal murah tangan.","Permata pusakanya dicuri, dan hartanya habis hingga ia jatuh miskin.","Dalam kemiskinan ia sadar bahwa kesombongan telah membutakan hatinya.","Dengan bantuan tetangga, ia berniaga jujur dan perlahan bangkit kembali.","Ia hidup sederhana dan menasihati anak cucunya agar rendah hati."]];
+const COL=["#c0392b","#d4a017","#1f9a86","#7b45b0","#2a6fb0","#d9528a"];
+const MAT=["Hikayat adalah karya sastra Melayu klasik tentang raja, bangsawan, dan pahlawan, yang awalnya dituturkan secara lisan.",
+"Struktur hikayat berurutan: abstrak, orientasi, komplikasi, evaluasi, resolusi, dan koda.",
+"Unsur intrinsik berada di dalam teks: tema, tokoh dan penokohan, alur, latar, sudut pandang, dan amanat.",
+"Unsur ekstrinsik berada di luar teks: nilai pendidikan, moral, sosial, religius, dan budaya.",
+"Unsur-unsur itu saling berhubungan: watak tokoh dan alur menghadirkan nilai, lalu nilai melahirkan amanat."];
+const $=id=>document.getElementById(id);
+const S={nama:"",kelas:"",kel:0,gi:0,skor:0,ans:[],q:[],ord:[],pool:[],hint:0,tries:0,t0:0,benar:0,sel:null};
+let cur=0;
+
+// bintang & nav
+for(let i=0;i<30;i++){const s=document.createElement("i");s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*3}s`;$("stars").appendChild(s)}
+$("nav").innerHTML=NAV.map((n,i)=>`<button onclick="go(${NID[i]})" id="n${NID[i]}">${n}</button>`).join("");
+function go(i){
+  if(i>=4&&i<=6&&!S.nama&&i>4){i=4}
+  document.querySelectorAll(".scr").forEach(s=>s.classList.remove("on"));$("s"+i).classList.add("on");
+  document.querySelectorAll("nav button").forEach(b=>b.classList.remove("on"));const b=$("n"+i);if(b)b.classList.add("on");
+  window.scrollTo({top:0,behavior:"smooth"});speechSynthesis.cancel();if(i==8)guru();if(i==9)papan();if(i==6)chests();
+}
+go(0);
+function tutup(){$("modal").classList.remove("on");speechSynthesis.cancel();clearInterval(S.tm)}
+function say(t,cb){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="id-ID";u.rate=.92;u.onend=cb;speechSynthesis.speak(u)}catch(e){setTimeout(cb,2500)}}
+
+// ===== MATERI MODE =====
+function mode(m){
+  const c=$("mc");$("mbx").className="mb m"+m;$("modal").classList.add("on");
+  if(m=="a"){
+    c.innerHTML=`<h2>🎧 Ruang Auditori</h2><p>Tekan putar, lalu simak narasi materi dengan saksama.</p><div id="ls">${MAT.map((t,i)=>`<div class="line" id="l${i}">${t}</div>`).join("")}</div><button class="btn s" onclick="playA(0)">▶ Putar Narasi</button> <button class="btn s m" onclick="speechSynthesis.cancel()">⏹ Henti</button>`;
+  }else if(m=="v"){
+    const ks=[["🧩","Struktur","Abstrak → Orientasi → Komplikasi → Evaluasi → Resolusi → Koda","#c33a5b"],["🛡️","Intrinsik","Tema • Tokoh • Alur • Latar • Sudut pandang • Amanat","#b07a0a"],["🌍","Ekstrinsik","Pendidikan • Moral • Sosial • Religius • Budaya","#127a68"],["🔗","Hubungan","Tokoh jujur → nilai moral; adat istana → nilai budaya","#7b45b0"]];
+    c.innerHTML=`<h2>🖼️ Ruang Visual</h2><div class="grid g2">${ks.map(k=>`<div class="card" style="background:${k[3]}"><div style="font-size:2.6rem">${k[0]}</div><h3>${k[1]}</h3><p>${k[2]}</p></div>`).join("")}</div>`;
+  }else if(m=="av"){
+    S.si=0;const em=["📜","🧩","🛡️","🌍","🔗"];
+    c.innerHTML=`<h2>🎬 Teater Istana</h2><div class="stage"><div class="big" id="em"></div><div class="cap" id="cp"></div></div><p><button class="btn s" onclick="av(-1)">◀</button> <button class="btn s" onclick="av(0)">▶ Putar</button> <button class="btn s" onclick="av(1)">▶|</button></p>`;
+    S.em=em;av(2);
+  }else{
+    const ch=["Tema","Tokoh","Alur","Latar","Sudut pandang","Amanat","Nilai pendidikan","Nilai moral","Nilai sosial","Nilai religius","Nilai budaya"].sort(()=>Math.random()-.5);
+    S.kc=0;c.innerHTML=`<h2>🤹 Ruang Kinestetik</h2><p>Ketuk sebuah kartu, lalu ketuk keranjang yang tepat!</p><div id="ch">${ch.map(x=>`<span class="chip" onclick="pil(this)">${x}</span>`).join("")}</div><div class="grid g2"><div class="bucket" onclick="taruh(this,'I')" id="bI"><b>🛡️ INTRINSIK</b><br></div><div class="bucket" onclick="taruh(this,'E')" id="bE"><b>🌍 EKSTRINSIK</b><br></div></div><p id="kf"></p>`;
+  }
+}
+function playA(i){if(i>=MAT.length){document.querySelectorAll(".line").forEach(l=>l.classList.remove("on"));return}
+  document.querySelectorAll(".line").forEach(l=>l.classList.remove("on"));$("l"+i).classList.add("on");say(MAT[i],()=>playA(i+1))}
+function av(d){
+  if(d==2){S.si=0}else if(d==-1){S.si=Math.max(0,S.si-1)}else if(d==1){S.si=Math.min(4,S.si+1)}
+  $("em").textContent=S.em[S.si];$("cp").textContent=MAT[S.si];
+  if(d==0){say(MAT[S.si],()=>{if(S.si<4){S.si++;av(0)}})}else if(d!=2)say(MAT[S.si])}
+function pil(e){document.querySelectorAll(".chip").forEach(x=>x.classList.remove("sel"));e.classList.add("sel");S.sel=e}
+const KI=["Tema","Tokoh","Alur","Latar","Sudut pandang","Amanat"];
+function taruh(b,k){const e=S.sel;if(!e)return;const ok=(KI.includes(e.textContent)?"I":"E")==k;
+  if(ok){b.appendChild(e);e.classList.remove("sel");S.sel=null;$("kf").textContent="✔ Tepat!"}else{$("kf").textContent="✖ Belum tepat, coba keranjang lainnya.";e.style.animation="shake .4s"; setTimeout(()=>e.style.animation="",400)}
+  if(!$("ch").children.length)$("kf").textContent="🎉 Hebat! Semua kartu terpilah dengan benar.";}
+
+// ===== GAME =====
+function startGame(){
+  S.nama=$("nama").value.trim();S.kelas=$("kelas").value.trim();S.kel=+$("kel").value;
+  if(!S.nama||!S.kelas||!S.kel){alert("Lengkapi NAMA LENGKAP, KELAS, dan KELOMPOK dahulu.");return}
+  S.q=[...G[S.kel-1]].sort(()=>Math.random()-.5).slice(0,10);S.gi=0;S.skor=0;S.ans=[];go(5);tampil();
+}
+function tampil(){
+  const q=S.q[S.gi];$("mu").setAttribute("href","#"+MC[S.kel-1]);$("bub").textContent="Ayo tentukan!";$("gk").textContent=`Kelompok ${S.kel} • Kutipan ${S.gi+1}/10`;$("gs").textContent=`⭐ ${S.skor}`;
+  $("gb").style.width=(S.gi/10*100)+"%";$("gq").innerHTML=`<b>“${q.t}”</b>`;$("gf").innerHTML="";S.lock=false;
+}
+function jawab(a){
+  if(S.lock)return;S.lock=true;const q=S.q[S.gi],ok=a==q.a;if(ok)S.skor++;react(ok);
+  S.ans.push({t:q.t,jawab:a,kunci:q.a,benar:ok});$("gs").textContent=`⭐ ${S.skor}`;
+  $("gf").innerHTML=`<div class="fb ${ok?"ok":"no"}">${ok?"🎉 Benar!":"😅 Kurang tepat."} Kunci: <b>${q.a=="I"?"INTRINSIK":"EKSTRINSIK"}</b> — ${q.r}.</div><button class="btn s" style="margin-top:10px" onclick="lanjut()">${S.gi<9?"Kutipan berikutnya ➜":"Selesai ➜"}</button>`;
+}
+function lanjut(){S.gi++;if(S.gi<10)tampil();else{sfx("win");confetti(80);$("gb").style.width="100%";$("gf").innerHTML="";
+  $("gq").innerHTML=`<h3>🏅 Skor akhirmu: ${S.skor}/10</h3><p>Lanjutkan ke asesmen untuk membuka kotak harta kelompokmu.</p>`;$("gk").textContent="Game selesai";
+  $("gf").innerHTML=`<button class="btn" style="margin-top:12px" onclick="go(6)">Menuju Asesmen ➜</button>`}}
+
+// ===== ASESMEN =====
+function chests(){
+  $("puz").classList.add("hide");$("chests").classList.remove("hide");
+  $("chests").innerHTML=ST.map((_,i)=>{const mine=S.kel==i+1;return `<div class="chest ${mine?"":"lock"}" style="background:${COL[i]}" onclick="${mine?`buka(${i})`:"alert('Kotak ini milik kelompok lain. Pilih kotak sesuai kelompokmu!')"}"><span class="ic">${mine?"📦":"🔒"}</span>Kotak Kelompok ${i+1}</div>`}).join("");
+}
+function buka(i){
+  $("chests").classList.add("hide");$("puz").classList.remove("hide");$("pt").textContent=`Kotak Kelompok ${i+1}`;$("pt").style.color=COL[i];
+  S.pool=ST[i].map((t,k)=>({t,k})).sort(()=>Math.random()-.5);S.ord=Array(6).fill(null);S.hint=0;S.tries=0;S.t0=Date.now();S.bad=[];S.hl=-1;draw();$("pf").innerHTML="";
+}
+function draw(){
+  $("slots").innerHTML=NM.map((n,i)=>{const p=S.ord[i];const st=S.bad.includes(i)?"bad":(S.chk&&p&&p.k==i?"good":"");
+    return `<div class="slot ${st} ${S.hl==i?"hl":""}" onclick="lepas(${i})"><span class="n">${i+1}. ${n}</span><span>${p?p.t:"<i style='opacity:.5'>kosong…</i>"}</span></div>`}).join("");
+  const used=S.ord.filter(Boolean).map(p=>p.k);
+  $("pool").innerHTML=S.pool.filter(p=>!used.includes(p.k)).map(p=>`<div class="piece" onclick="taruhP(${p.k})">${p.t}</div>`).join("")||"<i>Semua potongan sudah ditempatkan.</i>";
+}
+function taruhP(k){const i=S.ord.indexOf(null);if(i<0)return;S.ord[i]=S.pool.find(p=>p.k==k);S.bad=[];S.chk=false;S.hl=-1;draw()}
+function lepas(i){S.ord[i]=null;S.bad=[];S.chk=false;S.hl=-1;draw()}
+function cek(){
+  if(S.ord.includes(null)){$("pf").innerHTML=`<div class="fb no">Isi semua kotak urutan dahulu.</div>`;return}
+  S.tries++;S.chk=true;S.bad=S.ord.map((p,i)=>p.k==i?-1:i).filter(x=>x>=0);S.benar=6-S.bad.length;draw();
+  sfx(S.bad.length?"no":"win");if(!S.bad.length)confetti(70);$("pf").innerHTML=S.bad.length?`<div class="fb no">Baru ${S.benar}/6 tepat. Gunakan 🃏 Kartu Bantuan bila perlu.</div>`:`<div class="fb ok">🎉 Sempurna! Struktur hikayat tersusun benar. Silakan kumpulkan.</div>`;
+}
+function bantu(n){
+  S.hint++;const w=S.bad.length?S.bad[0]:S.ord.findIndex((p,i)=>!p||p.k!=i);
+  if(n==1)$("pf").innerHTML=`<div class="fb" style="background:#7a3fb0"><b>Kartu Ciri:</b><br>${NM.map((x,i)=>`${i+1}. ${x}: ${DEF[i]}`).join("<br>")}</div>`;
+  else if(w<0)$("pf").innerHTML=`<div class="fb ok">Susunanmu sudah benar!</div>`;
+  else if(n==2){S.hl=w;draw();$("pf").innerHTML=`<div class="fb" style="background:#7a3fb0"><b>Kartu Petunjuk:</b> kotak ${w+1} (${NM[w]}) masih keliru. Ingat: ${NM[w]} = ${DEF[w].toLowerCase()}.</div>`}
+  else $("pf").innerHTML=`<div class="fb" style="background:#7a3fb0"><b>Kartu Awal Kata:</b> untuk ${NM[w]}, cari potongan berawal “${ST[S.kel-1][w].split(" ").slice(0,3).join(" ")} …”</div>`;
+}
+// ===== SIMPAN =====
+let DB=null,USER=null;
+(async()=>{try{if(window.claude){DB=await claude.use("db");USER=await claude.use("user")}}catch(e){}})();
+async function kumpul(){
+  const dat={nama:S.nama,kelas:S.kelas,kelompok:S.kel,skorGame:S.skor,jawabanGame:S.ans,susunan:S.ord.map(p=>p?p.k+1:0),benarStruktur:S.ord.filter((p,i)=>p&&p.k==i).length,percobaan:S.tries,bantuan:S.hint,detik:Math.round((Date.now()-S.t0)/1000),ts:Date.now()};
+  const id=dat.ts+"-"+Math.random().toString(36).slice(2,6);let ok=false;
+  try{if(DB){await DB.collection("submissions").doc(id).set(dat);ok=true}}catch(e){}
+  try{const a=JSON.parse(localStorage.getItem("sub")||"[]");a.push(dat);localStorage.setItem("sub",JSON.stringify(a))}catch(e){}
+  $("done").innerHTML=`Terima kasih, <b>${S.nama}</b>! Skor game ${S.skor}/10 • struktur benar ${dat.benarStruktur}/6.<br>${ok?"Hasilmu sudah terkirim ke Bapak/Ibu Guru. ✔":"Hasil tersimpan di perangkat ini (belum terkirim ke server)."}`;sfx("win");confetti(90);go(7);
+}
+// ===== GURU =====
+async function guru(){
+  const g=$("guru");const own=USER?USER.isOwner():false;
+  if(DB&&!own){g.innerHTML=`<div class="card">🔒 Halaman ini khusus guru pemilik halaman. Buka artefak melalui akun pemilik untuk meninjau pengumpulan siswa. Anda tetap dapat mencoba seluruh fitur sebagai murid.</div>`;return}
+  g.innerHTML=`<div class="card">Memuat…</div>`;
+  try{let rows;if(DB){const s=await DB.collection("submissions").orderBy("ts","desc").get();rows=s.docs.map(d=>d.data())}else{rows=JSON.parse(localStorage.getItem("sub")||"[]").sort((a,b)=>b.ts-a.ts)}window.ROWS=rows;
+    g.innerHTML=`<div class="card"><p>Total pengumpulan: <b>${rows.length}</b> <button class="btn s" onclick="csv()">⬇ Unduh CSV</button> <button class="btn s m" onclick="guru()">↻ Muat ulang</button></p><div style="overflow-x:auto"><table><tr><th>Nama</th><th>Kelas</th><th>Kel</th><th>Game</th><th>Struktur</th><th>Bantuan</th><th>Waktu</th></tr>${rows.map((r,i)=>`<tr class="r" onclick="detail(${i})"><td>${r.nama}</td><td>${r.kelas}</td><td>${r.kelompok}</td><td>${r.skorGame}/10</td><td>${r.benarStruktur}/6</td><td>${r.bantuan}</td><td>${new Date(r.ts).toLocaleString("id-ID")}</td></tr>`).join("")}</table></div></div><div id="dt"></div>`;
+  }catch(e){g.innerHTML=`<div class="card">Gagal memuat data.</div>`}
+}
+function detail(i){const r=ROWS[i];$("dt").innerHTML=`<div class="card"><h3>${r.nama} — Kel ${r.kelompok}</h3><p>Susunan siswa (nomor potongan per kotak): <b>${r.susunan.join(" → ")}</b> (benar: 1→2→3→4→5→6). Percobaan: ${r.percobaan}, durasi ${r.detik} dtk.</p>${r.jawabanGame.map(a=>`<div class="line" style="border-left-color:${a.benar?"#43d17b":"#ff6b6b"}">${a.benar?"✔":"✖"} ${a.t}<br><small>Jawab: ${a.jawab=="I"?"Intrinsik":"Ekstrinsik"} • Kunci: ${a.kunci=="I"?"Intrinsik":"Ekstrinsik"}</small></div>`).join("")}</div>`;$("dt").scrollIntoView({behavior:"smooth"})}
+async function csv(){
+  const h="Nama,Kelas,Kelompok,SkorGame,StrukturBenar,Bantuan,Percobaan,Detik,Waktu\n";
+  const t=h+ROWS.map(r=>[r.nama,r.kelas,r.kelompok,r.skorGame,r.benarStruktur,r.bantuan,r.percobaan,r.detik,new Date(r.ts).toISOString()].map(x=>`"${x}"`).join(",")).join("\n");
+  try{const d=window.claude?await claude.use("downloads"):null;if(d){await d.save({filename:"asesmen-hikayat.csv",data:t});return}}catch(e){}const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\ufeff"+t],{type:"text/csv"}));a.download="asesmen-hikayat.csv";a.click()
+}
+
+// ===== SUARA, EFEK, ANIMASI =====
+const MC=["raja","ksatria","puteri","ksatria","nuri","raja"];
+let AC=null,master=null,mus=null,musicOn=true,musicStarted=false,mt=null,bar=0;
+function ac(){if(!AC){try{AC=new (window.AudioContext||window.webkitAudioContext)();master=AC.createGain();master.gain.value=.6;master.connect(AC.destination);mus=AC.createGain();mus.gain.value=.09;mus.connect(master)}catch(e){}}
+  if(AC&&AC.state=="suspended")AC.resume();return AC}
+function tone(f,t0,d,type,v,dest){const a=ac();if(!a)return;const o=a.createOscillator(),g=a.createGain();o.type=type||"sine";o.frequency.value=f;g.gain.setValueAtTime(0,t0);g.gain.linearRampToValueAtTime(v||.15,t0+.01);g.gain.exponentialRampToValueAtTime(.0001,t0+d);o.connect(g);g.connect(dest||master);o.start(t0);o.stop(t0+d+.05)}
+function sfx(k){const a=ac();if(!a)return;const t=a.currentTime;
+  if(k=="click"){tone(660,t,.08,"square",.06);tone(990,t+.04,.08,"triangle",.07)}
+  else if(k=="ok")[523,659,784,1047].forEach((f,i)=>tone(f,t+i*.08,.25,"triangle",.18));
+  else if(k=="no"){tone(220,t,.25,"sawtooth",.1);tone(165,t+.15,.35,"sawtooth",.1)}
+  else if(k=="win")[523,659,784,659,784,1047,1319].forEach((f,i)=>tone(f,t+i*.12,.35,"triangle",.2));
+  else if(k=="pop"){tone(400,t,.1,"sine",.15);tone(800,t+.06,.12,"sine",.15)}}
+const MEL=[[0,2,3,2,4,3,2,1],[3,4,5,4,3,2,1,2],[0,1,2,3,2,1,0,2],[2,3,4,5,4,3,2,0]],SC=[293.66,329.63,349.23,440,493.88,587.33];
+function barPlay(){if(!musicOn)return;const a=ac();if(!a)return;const t=a.currentTime+.05,m=MEL[bar++%4];
+  tone(146.83,t,3.9,"sine",.6,mus);tone(220,t,3.9,"sine",.3,mus);m.forEach((n,i)=>tone(SC[n],t+i*.5,.9,"triangle",1,mus));tone(SC[m[0]]*2,t+2,1.2,"sine",.4,mus)}
+function musik(on){musicOn=on;$("snd").textContent=on?"🎵":"🔇";clearInterval(mt);if(on){ac();barPlay();mt=setInterval(barPlay,4000)}}
+document.addEventListener("pointerdown",e=>{if(!musicStarted&&!e.target.closest("#snd")){musicStarted=true;if(musicOn)musik(true)}});
+document.addEventListener("click",e=>{if(e.target.closest("button,.sq,.chip,.piece,.slot,.chest,.line,tr.r"))sfx("click")});
+function toast(m){const t=$("toast");t.textContent=m;t.classList.add("on");sfx("pop");clearTimeout(t.h);t.h=setTimeout(()=>t.classList.remove("on"),2800)}
+window.alert=toast;
+function confetti(n){const cs=["#f2c14e","#ff6b81","#43d17b","#5ac8fa","#b784e0","#ff9f43"];for(let i=0;i<(n||60);i++){const e=document.createElement("i");e.className="cf";e.style.cssText=`left:${Math.random()*100}vw;background:${cs[i%6]};border-radius:${i%3?"2px":"50%"};animation-duration:${1.6+Math.random()*1.8}s;animation-delay:${Math.random()*.5}s`;document.body.appendChild(e);setTimeout(()=>e.remove(),4200)}}
+function react(ok){const m=$("mas");m.classList.remove("happy","sad");void m.getBoundingClientRect();m.classList.add(ok?"happy":"sad");
+  $("bub").textContent=ok?["Daulat tuanku, tepat!","Cemerlang sekali!","Bijaksana jawabanmu!"][Math.random()*3|0]:["Hamba kurang yakin…","Jangan menyerah, ksatria!","Pelajari buktinya lagi."][Math.random()*3|0];
+  sfx(ok?"ok":"no");if(ok&&S.skor%3==0)confetti(35)}
+for(let i=0;i<5;i++){const c=document.createElement("div");c.className="cloud";c.style.cssText=`top:${8+i*16}%;width:${140+i*40}px;animation-duration:${60+i*18}s;animation-delay:-${i*14}s`;document.body.appendChild(c)}
+document.addEventListener("pointermove",e=>{if(e.pointerType=="touch")return;const t=e.target.closest(".sq,.chest:not(.lock)");if(!t)return;const r=t.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;t.style.transform=`perspective(700px) rotateY(${x*16}deg) rotateX(${-y*16}deg) translateY(-8px) scale(1.04)`});
+document.addEventListener("pointerout",e=>{const t=e.target.closest(".sq,.chest");if(t&&!t.contains(e.relatedTarget))t.style.transform=""});
+// ===== PAPAN PERINGKAT =====
+const pt=r=>Math.round(r.skorGame*5+r.benarStruktur*50/6);
+async function papan(){
+  const g=$("pp");g.innerHTML="<div class='card'>Memuat peringkat…</div>";let rows=[];
+  try{if(DB){const s=await DB.collection("submissions").get();rows=s.docs.map(d=>d.data())}}catch(e){}
+  if(!rows.length){try{rows=JSON.parse(localStorage.getItem("sub")||"[]")}catch(e){}}
+  const best={};rows.forEach(r=>{if(!r||!r.nama)return;const k=(r.nama+"|"+r.kelas+"|"+r.kelompok).toLowerCase(),p=pt(r);if(!best[k]||p>best[k].p)best[k]={...r,p}});
+  const L=Object.values(best);
+  const gr=[1,2,3,4,5,6].map(n=>{const m=L.filter(r=>r.kelompok==n).sort((a,b)=>b.p-a.p);return{n,c:m.length,p:m.length?m.reduce((a,r)=>a+r.p,0)/m.length:0,top:m[0]}}).sort((a,b)=>b.p-a.p||b.c-a.c);
+  const md=["🥇","🥈","🥉","4️⃣","5️⃣","6️⃣"];
+  g.innerHTML=gr.map((x,i)=>`<div class="lb" style="background:linear-gradient(135deg,${COL[x.n-1]},#2a0810);animation-delay:${i*.12}s"><div class="md">${md[i]}</div><svg class="ch"><use href="#${MC[x.n-1]}"/></svg><div class="bd"><b>Kelompok ${x.n}</b> <small>• ${x.c} murid mengumpulkan${x.top?" • bintang: "+x.top.nama.split(" ")[0]:""}</small><div class="bar"><b style="width:${x.p}%"></b></div></div><div class="pt">${Math.round(x.p)}</div></div>`).join("")+(L.length?"":"<div class='card'>Belum ada kelompok yang mengumpulkan. Jadilah yang pertama! 👑</div>");
+  if(L.length&&!window.pcf){window.pcf=1;confetti(40)}
+}
+</script>
+</body>
+</html>
